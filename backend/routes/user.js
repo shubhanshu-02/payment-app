@@ -42,14 +42,14 @@ router.post("/signup", async (req, res) => {
         lastName: req.body.lastName,
     })
 
-    const userID = user._id;
+    const userId = user._id;
 
     await Account.create({
-        userID,
+        userId,
         balance : 1 + Math.random() * 10000
     })
 
-    const token = jwt.sign({ userID }, JWT_SECRET);
+    const token = jwt.sign({ userId }, JWT_SECRET);
 
     res.json({
         message: "User created successfully",
@@ -77,7 +77,7 @@ router.post("/signin", async (req, res) => {
 
     if (user) {
         const token = jwt.sign({
-            userID: user._id
+            userId: user._id
         }, JWT_SECRET);
 
         res.json({
@@ -104,7 +104,7 @@ router.put("/update", authMiddleware, async (req, res) => {
             message: "Error while updating information"
         })
     }
-    await User.updateOne({ _id: req.userID }, req.body);
+    await User.updateOne({ _id: req.userId }, req.body);
 
     res.status(200).json({
         message: "Updated successfully"

@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     lastName: String
 })
 const AccountSchema = new mongoose.Schema({
-    userID: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
