@@ -8,8 +8,8 @@ import { useState } from "react"
 import axios from "axios"
 
 export const Signup = () =>{
-    const [firstname,setFirstName] = useState("");
-    const [lastname,setLastName] = useState("");
+    const [firstName,setFirstName] = useState("");
+    const [lastName,setLastName] = useState("");
     const [username,setUserName] = useState("");
     const [password,setPassword] = useState("");
 
@@ -40,12 +40,12 @@ export const Signup = () =>{
             <div className="pt-4">
                 
             <Button onClick={() =>{
-                axios.post("http://localhost:3000/api/v1/user/signup"),{
+                axios.post("http://localhost:3000/api/v1/user/signup",{
                     username,
-                    firstname,
-                    lastname,
-                    password
-                }
+                    password,
+                    firstName,
+                    lastName
+                })
             }} 
             label = {"Sign up"}/>
             
