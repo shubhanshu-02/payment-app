@@ -15,13 +15,14 @@ const signupSchema = zod.object({
 
 router.post("/signup", async (req, res) => {
     // const body = req.body;
-    // console.log((req.body));
+    console.log((req.body));
     // console.log((JWT_SECRET));
-
+    
     const { success } = signupSchema.safeParse(req.body);
+    console.log((signupSchema.safeParse(req.body)));
     if (!success) {
         return res.json({
-            message: "Email already taken/Incorrect inputs"
+            message: "Incorrect inputs"
         })
     }
 
@@ -46,7 +47,7 @@ router.post("/signup", async (req, res) => {
 
     await Account.create({
         userId,
-        balance : 1 + Math.random() * 10000
+        balance : 1 + Math.random() * 1000
     })
 
     const token = jwt.sign({ userId }, JWT_SECRET);
