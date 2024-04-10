@@ -1,5 +1,6 @@
-const JWT_SECRET = 'temp';
+const dotenv = require('dotenv')
+dotenv.config();
 
 module.exports = {
-    JWT_SECRET
+    JWT_SECRET : process.env.JWT_SECRET
 };

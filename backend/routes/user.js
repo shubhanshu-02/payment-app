@@ -125,6 +125,7 @@ router.get("/users", authMiddleware, async (req, res) => {
             }
         }]
     })
+
     res.status(200).json({
         User: users.map(User => ({
             username: User.username,
