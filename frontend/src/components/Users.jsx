@@ -9,11 +9,11 @@ export const Users = () => {
 
     useEffect(() => {
         axios
-        .get("http://localhost:3000/api/v1/user/users")
+        .get("http://localhost:3000/api/v1/user/users" + filter)
         .then(response => {
             setUsers(response.data.user)
         })
-    }, [])
+    }, [filter])
     return <>
         <div className="font-bold mt-6 text-2xl p-2">
             Users
