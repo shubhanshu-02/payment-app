@@ -6,12 +6,14 @@ import { BottomWarning } from "../components/BottomWarning"
 import { Logo } from "../components/Logo"
 import { useState } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 export const Signup = () =>{
     const [firstName,setFirstName] = useState("");
     const [lastName,setLastName] = useState("");
     const [username,setUserName] = useState("");
     const [password,setPassword] = useState("");
+const navigate = useNavigate();
 
     return <div className="bg-slate-300 h-screen flex justify-center">
         <div className="flex flex-col justify-center">
@@ -39,7 +41,7 @@ export const Signup = () =>{
             placeholder="asdf" label = {"Password"} />
             <div className="pt-4">
                 
-            <Button onClick={async() =>{
+            <Button onClick={async () =>{
                 const response = await axios.post("http://localhost:3000/api/v1/user/signup",{
                     username,
                     password,
@@ -47,6 +49,7 @@ export const Signup = () =>{
                     lastName
                 });
                 localStorage.setItem("token",response.data.token)
+                navigate("/dashboard");
             }} 
             label = {"Sign up"}/>
             
