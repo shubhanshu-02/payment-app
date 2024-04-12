@@ -14,10 +14,7 @@ const signupSchema = zod.object({
 })
 
 router.post("/signup", async (req, res) => {
-    // const body = req.body;
-    console.log((req.body));
-    // console.log((JWT_SECRET));
-    
+ 
     const { success } = signupSchema.safeParse(req.body);
     console.log((signupSchema.safeParse(req.body)));
     if (!success) {
