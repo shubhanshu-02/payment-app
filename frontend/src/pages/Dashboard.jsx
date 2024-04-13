@@ -5,7 +5,7 @@ import { Users } from "../components/Users"
 export const Dashboard = () => {
     return <div>
      <Appbar />   
-     <Balance value = {"10,000"} />   
+     <Balance />   
      <Users />   
     </div>
 
